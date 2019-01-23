@@ -24,7 +24,7 @@ namespace Marco.AspNetCore.Cqs.Application.CommandHandlers
 
         public async Task<PessoaFisica> Execute(IConsultarPessoaFisicaPorCpfCommand command, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return await consultarPessoaFisicaPorCpfQueryHandler.Execute(new ConsultarPessoaFisicaPorCpfQuery(command.Cpf), cancellationToken);
+            return await consultarPessoaFisicaPorCpfQueryHandler.Execute(new ConsultarPessoaFisicaPorCpfQuery(command.Cpf.Numero), cancellationToken);
         }
 
         public async Task<PessoaFisica> Handle(ConsultarPessoaFisicaPorCpfCommand request, CancellationToken cancellationToken) =>
