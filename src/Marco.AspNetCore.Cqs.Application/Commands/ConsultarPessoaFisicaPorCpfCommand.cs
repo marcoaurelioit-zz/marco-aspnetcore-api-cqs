@@ -1,5 +1,6 @@
 ﻿using Marco.AspNetCore.Cqs.Domain.Interfaces.CQS.Commands;
 using Marco.AspNetCore.Cqs.Domain.Models;
+using Marco.Domain.Core.ValueObjects.Documentos;
 using MediatR;
 
 namespace Marco.AspNetCore.Cqs.Application.Commands
@@ -8,8 +9,8 @@ namespace Marco.AspNetCore.Cqs.Application.Commands
     {
         public ConsultarPessoaFisicaPorCpfCommand(string cpf)
         {
-            Cpf = cpf;
+            Cpf = new Cpf(cpf);
         }
-        public string Cpf { get; private set; }
+        public Cpf Cpf { get; private set; }
     }
 }
