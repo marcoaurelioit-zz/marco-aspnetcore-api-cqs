@@ -13,7 +13,7 @@ namespace Marco.AspNetCore.Cqs.WebApi
         protected override ApiInfo ApiInfo => new ApiInfo()
         {
             Name = "Marco Asp Net Core - CQS",
-            Description = "API com implemntação de CQS (Command Query Separation).",
+            Description = "API CQS (Command Query Separation).",
             DefaultVersion = "1.0"
         };
 
