@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>C:\git-marco\marco-aspnetcore-api-cqs\src\Marco.AspNetCore.Cqs.WebApi\Marco.AspNetCore.Cqs.WebApi.xml</DocumentationFile>
+    <NoWarn>1701;1702;1591</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\" />
+  </ItemGroup>
+ 
+  <ItemGroup>
+    <ProjectReference Include="..\Marco.AspNetCore.ApiConfiguration\Marco.AspNetCore.ApiConfiguration.csproj" />
+    <ProjectReference Include="..\Marco.AspNetCore.Cqs.Application\Marco.AspNetCore.Cqs.Application.csproj" />
+    <ProjectReference Include="..\Marco.AspNetCore.Cqs.Infra.Data.Dapper\Marco.AspNetCore.Cqs.Infra.Data.Dapper.csproj" />
+  </ItemGroup>
+
+</Project>
