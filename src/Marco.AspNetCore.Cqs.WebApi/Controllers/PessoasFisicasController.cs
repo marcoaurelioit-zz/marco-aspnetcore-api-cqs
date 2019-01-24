@@ -1,6 +1,5 @@
 ﻿using Marco.AspNetCore.ApiConfiguration;
 using Marco.AspNetCore.Cqs.Application.Commands;
-using Marco.AspNetCore.Cqs.Domain.Models;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
