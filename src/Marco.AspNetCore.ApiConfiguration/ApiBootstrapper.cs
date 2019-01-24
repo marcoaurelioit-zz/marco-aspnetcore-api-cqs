@@ -101,14 +101,12 @@ namespace Marco.AspNetCore.ApiConfiguration
                         .OrderBy(a => a.ApiVersion.MajorVersion).ThenBy(a => a.ApiVersion.MinorVersion))
                             options.SwaggerDoc(description.GroupName, CreateSwaggerInfoForApiVersion(description));
 
-
-                        options.DescribeAllEnumsAsStrings();
-
                         options.DescribeAllEnumsAsStrings();
                         options.OperationFilter<SwaggerDefaultValues>();
                         options.IncludeXmlComments(XmlCommentsFilePath);
                     });
         }
+
         private Info CreateSwaggerInfoForApiVersion(ApiVersionDescription description)
         {
             var info = new Info()
@@ -131,7 +129,8 @@ namespace Marco.AspNetCore.ApiConfiguration
                 info.Description += "<br><br><span style=\"color: #ff0000;font-weight: bold;\">This version is already deprecated.</span>";
 
             return info;
-        }     
+        }  
+        
         private Info CreateInfoForApiVersion(ApiVersionDescription description)
         {
             var info = new Info()

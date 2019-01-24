@@ -19,8 +19,7 @@ namespace Marco.AspNetCore.Cqs.WebApi.Controllers
         {
             this.mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
         }
-
-        [ProducesResponseType(typeof(PessoaFisica), 200)]
+        
         [HttpGet("ConsultarPessoaFisicaPorCpf/{cpf}")]
         public async Task<IActionResult> ConsultarPessoaFisicaPorCpfAsync([FromRoute]string cpf)
         {
