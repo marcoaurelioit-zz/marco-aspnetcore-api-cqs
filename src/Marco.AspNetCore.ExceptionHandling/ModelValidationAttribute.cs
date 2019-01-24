@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc.Filters;
+﻿using Marco.AspNetCore.ExceptionHandling.Exceptions;
+using Microsoft.AspNetCore.Mvc.Filters;
 using System.Collections.Generic;
 
 namespace Marco.AspNetCore.ExceptionHandling

@@ -1,4 +1,6 @@
-﻿using Marco.Exceptions.Core;
+﻿using Marco.AspNetCore.ExceptionHandling.Exceptions;
+using Marco.AspNetCore.ExceptionHandling.Serialization;
+using Marco.Exceptions.Core;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
@@ -53,7 +55,7 @@ namespace Marco.AspNetCore.ExceptionHandling
                 context.Response.ContentType = "application/json";
                 context.Response.StatusCode = (int)statusCode;
 
-                await context.Response.WriteAsync(JsonConvert.SerializeObject(result, new JsonSerializerSettings()));
+                await context.Response.WriteAsync(JsonConvert.SerializeObject(result, new GeneralJsonSerializerSettings()));
             }
         }
 

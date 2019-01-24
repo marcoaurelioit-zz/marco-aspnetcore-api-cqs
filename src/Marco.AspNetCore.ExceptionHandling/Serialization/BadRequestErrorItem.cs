@@ -1,4 +1,4 @@
-﻿namespace Marco.AspNetCore.ExceptionHandling
+﻿namespace Marco.AspNetCore.ExceptionHandling.Serialization
 {
     public class BadRequestErrorItem
     {

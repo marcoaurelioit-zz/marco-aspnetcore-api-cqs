@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Marco.AspNetCore.ExceptionHandling
+namespace Marco.AspNetCore.ExceptionHandling.Serialization
 {
     public class BadRequestError
     {

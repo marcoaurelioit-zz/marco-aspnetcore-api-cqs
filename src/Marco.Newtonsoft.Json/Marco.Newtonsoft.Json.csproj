@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Authors>Marco</Authors>
+    <Copyright>Marco (C) 2019</Copyright>
+    <PackageProjectUrl>https://github.com/marcoaurelioit</PackageProjectUrl>
+    <PackageTags>marco;crosscutting;newtonsoft;json</PackageTags>
+    <RepositoryUrl>https://github.com/marcoaurelioit</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <Description>This package adds custom json serializer settings and contract resolvers for wide use in many concerns.</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="newtonsoft.json" Version="11.0.2" />
+  </ItemGroup>
+
+</Project>

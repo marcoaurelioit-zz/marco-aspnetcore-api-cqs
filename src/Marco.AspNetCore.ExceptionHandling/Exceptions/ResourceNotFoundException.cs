@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Marco.AspNetCore.ExceptionHandling
+namespace Marco.AspNetCore.ExceptionHandling.Exceptions
 {
     [Serializable]
     public class ResourceNotFoundException : CoreException<ResourceNotFoundExceptionItem>

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 
-namespace Marco.AspNetCore.ExceptionHandling
+namespace Marco.AspNetCore.ExceptionHandling.Serialization
 {
     public class InternalServerError
     {
