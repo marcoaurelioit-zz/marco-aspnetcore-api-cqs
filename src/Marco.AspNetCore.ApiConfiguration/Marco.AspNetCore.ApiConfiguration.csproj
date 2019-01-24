@@ -27,4 +27,8 @@
     <PackageReference Include="Microsoft.Extensions.PlatformAbstractions" Version="1.1.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="4.0.1" />   
   </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Marco.AspNetCore.ExceptionHandling\Marco.AspNetCore.ExceptionHandling.csproj" />
+  </ItemGroup>
 </Project>

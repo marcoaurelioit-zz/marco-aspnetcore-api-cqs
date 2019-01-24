@@ -38,6 +38,7 @@ namespace Marco.AspNetCore.ApiConfiguration
         }
         public void Configure(IApplicationBuilder app, IApiVersionDescriptionProvider apiVersionDescriptionProvider)
         {
+            app.UseMarcoExceptionHandling();
             app.UseApiVersioning();
             app.UseAuthentication();
             app.UseMvc();
