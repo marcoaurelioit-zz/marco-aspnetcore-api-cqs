@@ -30,5 +30,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Marco.AspNetCore.ExceptionHandling\Marco.AspNetCore.ExceptionHandling.csproj" />
+    <ProjectReference Include="..\Marco.Logging\Marco.Logging.csproj" />
   </ItemGroup>
 </Project>

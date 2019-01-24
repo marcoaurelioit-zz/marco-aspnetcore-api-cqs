@@ -260,3 +260,4 @@ paket-files/
 __pycache__/
 *.pyc
 /src/Marco.AspNetCore.Cqs.WebApi/Marco.AspNetCore.Cqs.WebApi.xml
+/src/Marco.AspNetCore.Cqs.WebApi/logs
