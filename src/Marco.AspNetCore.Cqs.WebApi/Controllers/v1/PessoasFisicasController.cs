@@ -1,12 +1,15 @@
-﻿using Marco.AspNetCore.ApiConfiguration;
+﻿using AutoMapper;
+using Marco.AspNetCore.ApiConfiguration;
 using Marco.AspNetCore.Cqs.Application.Commands;
+using Marco.AspNetCore.Cqs.Domain.Models;
+using Marco.AspNetCore.Cqs.WebApi.Models.v1;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Threading.Tasks;
 
-namespace Marco.AspNetCore.Cqs.WebApi.Controllers
+namespace Marco.AspNetCore.Cqs.WebApi.Controllers.v1
 {
     [AllowAnonymous]
     [ApiVersion("1.0")]
@@ -27,7 +30,7 @@ namespace Marco.AspNetCore.Cqs.WebApi.Controllers
             if (pessoaFisica is null)
                 return NotFound();
 
-            return Ok(pessoaFisica);
+            return Ok(Mapper.Map<PessoaFisica,PessoaFisicaGetResult>(pessoaFisica));
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using Marco.AspNetCore.ApiConfiguration;
+﻿using AutoMapper;
+using Marco.AspNetCore.ApiConfiguration;
 using Marco.AspNetCore.Cqs.Infra.Data.Dapper;
 using Marco.Caching;
 using Microsoft.AspNetCore.Builder;
@@ -16,6 +17,14 @@ namespace Marco.AspNetCore.Cqs.WebApi
             Description = "API CQS (Command Query Separation).",
             DefaultVersion = "1.0"
         };
+
+        static Startup()
+        {
+            Mapper.Initialize(config =>
+            {
+                config.AddProfile<WebApiAutoMapperProfile>();              
+            });
+        }
 
         public Startup(IConfiguration configuration)
            : base(configuration)
