@@ -20,16 +20,13 @@
 
   <ItemGroup>
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="6.0.0" />
+    <PackageReference Include="Marco.AspNetCore.ExceptionHandling" Version="1.0.1" />
     <PackageReference Include="Marco.Extensions.Configuration" Version="1.0.0" />
+    <PackageReference Include="Marco.Logger" Version="1.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.1.5" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning" Version="3.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer" Version="3.1.0" />
     <PackageReference Include="Microsoft.Extensions.PlatformAbstractions" Version="1.1.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="4.0.1" />   
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\Marco.AspNetCore.ExceptionHandling\Marco.AspNetCore.ExceptionHandling.csproj" />
-    <ProjectReference Include="..\Marco.Logging\Marco.Logging.csproj" />
   </ItemGroup>
 </Project>

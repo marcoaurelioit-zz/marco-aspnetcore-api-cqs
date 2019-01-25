@@ -9,6 +9,7 @@ using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Net;
 using System.Threading.Tasks;
 
 namespace Marco.AspNetCore.Cqs.WebApi.Controllers.v1
@@ -23,9 +24,9 @@ namespace Marco.AspNetCore.Cqs.WebApi.Controllers.v1
             this.mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
         
         [HttpGet("{cpf}")]
-        [ProducesResponseType(typeof(PessoaFisicaGetResult),200)]
-        [ProducesResponseType(typeof(CoreException), 400)]
-        [ProducesResponseType(typeof(InternalServerError), 500)]
+        [ProducesResponseType(typeof(PessoaFisicaGetResult), (int)HttpStatusCode.OK)]
+        [ProducesResponseType(typeof(CoreException), (int)HttpStatusCode.BadRequest)]
+        [ProducesResponseType(typeof(InternalServerError), (int)HttpStatusCode.InternalServerError)]
         public async Task<IActionResult> GetByCpfAsync([FromRoute]string cpf)
         {
             var command = new ConsultarPessoaFisicaPorCpfCommand(cpf);

@@ -33,7 +33,7 @@ namespace Marco.AspNetCore.ApiConfiguration
             services.AddHttpContextAccessor();
             services.AddAutoMapper();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-            services.AddMarcoLogging(Configuration);
+            services.AddMarcoLogger(Configuration);
             AddSwagger(services);
             AddCustomApiServices(services);
         }
