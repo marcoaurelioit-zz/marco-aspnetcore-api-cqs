@@ -21,14 +21,14 @@ namespace Marco.AspNetCore.Cqs.Infra.Data.Dapper.CQS.QueryHandlers
 
         public async Task<PessoaFisica> Execute(IConsultarPessoaFisicaPorCpfQuery query, CancellationToken cancellationToken = default(CancellationToken))
         {
-            if (string.IsNullOrWhiteSpace(query.Cpf))
+            if (query.Cpf is null || string.IsNullOrWhiteSpace(query.Cpf?.Numero))
                 return null;
 
-            var cacheKey = $"{nameof(PessoaFisica)}_Cpf:{query.Cpf}";
+            var cacheKey = $"{nameof(PessoaFisica)}_Cpf:{query.Cpf.Numero}";
 
             if (!cache.TryGetValue<PessoaFisica>(cacheKey, out var pessoaFisica))
             {
-                // to use base date
+                // to use database
 
                 //var parameters = new DynamicParameters();
                 //parameters.Add("cpf", query.Cpf, DbType.AnsiString);
@@ -36,16 +36,16 @@ namespace Marco.AspNetCore.Cqs.Infra.Data.Dapper.CQS.QueryHandlers
                 //var sql = "SELECT Cpf, Nome, DataNascimento FROM YourTable WHERE Cpf = @cpf";
                 //pessoaFisica = (await dbContext.QueryAsync<PessoaFisica>(sql, parameters)).FirstOrDefault();
 
-
                 // Fake Pessoa fisica
                 pessoaFisica = new PessoaFisica
                 {
-                    Cpf = query.Cpf,
+                    Cpf = query.Cpf.NumeroComMascara,
                     Nome = "Maria da Silva",
                     DataNascimento = DateTime.Now.AddYears(-36)
                 };
 
-                await cache.SetAsync(cacheKey, pessoaFisica);
+                if (pessoaFisica != null)
+                    await cache.SetAsync(cacheKey, pessoaFisica);
             }
 
             return pessoaFisica;

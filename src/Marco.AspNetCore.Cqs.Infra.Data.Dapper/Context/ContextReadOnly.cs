@@ -11,13 +11,12 @@ namespace Marco.AspNetCore.Cqs.Infra.Data.Dapper.Context
     public class ContextReadOnly
     {
         private readonly SqlServerReadOnlySettings sqlServerReadOnlySettings;
+        private IDbConnection Connection => new SqlConnection(sqlServerReadOnlySettings.DefaultConnection);
 
         public ContextReadOnly(SqlServerReadOnlySettings sqlServerReadOnlySettings)
         {
             this.sqlServerReadOnlySettings = sqlServerReadOnlySettings ?? throw new ArgumentNullException(nameof(sqlServerReadOnlySettings));
-        }
-
-        private IDbConnection Connection => new SqlConnection(sqlServerReadOnlySettings.DefaultConnection);
+        }       
 
         #region [+] Query
         public virtual IEnumerable<T> Query<T>(string sql, object param = null) where T : Entity =>

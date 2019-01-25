@@ -14,13 +14,11 @@ namespace Marco.AspNetCore.Cqs.WebApi.Controllers
     {
         private readonly IMediator mediator;
 
-        public PessoasFisicasController(IMediator mediator)
-        {
+        public PessoasFisicasController(IMediator mediator)=> 
             this.mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
-        }
         
-        [HttpGet("ConsultarPessoaFisicaPorCpf/{cpf}")]
-        public async Task<IActionResult> ConsultarPessoaFisicaPorCpfAsync([FromRoute]string cpf)
+        [HttpGet("{cpf}")]
+        public async Task<IActionResult> GetByCpfAsync([FromRoute]string cpf)
         {
             var command = new ConsultarPessoaFisicaPorCpfCommand(cpf);
 

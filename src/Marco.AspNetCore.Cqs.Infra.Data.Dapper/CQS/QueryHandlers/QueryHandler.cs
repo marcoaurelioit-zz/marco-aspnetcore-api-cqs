@@ -3,10 +3,6 @@
     public abstract class @QueryHandler<TContext>
     {
         protected TContext dbContext;
-
-        public QueryHandler(TContext dbContext) =>
-            this.dbContext = dbContext;
-
-        public QueryHandler() { }
+        public QueryHandler(TContext dbContext) => this.dbContext = dbContext;
     }
 }

@@ -6,11 +6,12 @@ using MediatR;
 namespace Marco.AspNetCore.Cqs.Application.Commands
 {
     public class ConsultarPessoaFisicaPorCpfCommand : IConsultarPessoaFisicaPorCpfCommand, IRequest<PessoaFisica>
-    {
+    {      
+        public Cpf Cpf { get; private set; }
+
         public ConsultarPessoaFisicaPorCpfCommand(string cpf)
         {
             Cpf = new Cpf(cpf);
         }
-        public Cpf Cpf { get; private set; }
     }
 }
