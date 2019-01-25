@@ -1,9 +1,9 @@
 ﻿using AutoMapper;
-using Marco.AspNetCore.ApiConfiguration;
 using Marco.AspNetCore.Cqs.Application.Commands;
 using Marco.AspNetCore.Cqs.Domain.Models;
 using Marco.AspNetCore.Cqs.WebApi.Models.v1;
 using Marco.AspNetCore.ExceptionHandling.Serialization;
+using Marco.AspNetCore.WebApi.BootStrapper;
 using Marco.Exceptions.Core;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;

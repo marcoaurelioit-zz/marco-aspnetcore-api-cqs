@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
-using Marco.AspNetCore.ApiConfiguration;
 using Marco.AspNetCore.Cqs.Infra.Data.Dapper;
+using Marco.AspNetCore.WebApi.BootStrapper;
 using Marco.Caching;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;

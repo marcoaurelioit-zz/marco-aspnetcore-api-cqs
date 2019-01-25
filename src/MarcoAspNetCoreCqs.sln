@@ -11,8 +11,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Marco.AspNetCore.Cqs.Domain
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Marco.AspNetCore.Cqs.Infra.Data.Dapper", "Marco.AspNetCore.Cqs.Infra.Data.Dapper\Marco.AspNetCore.Cqs.Infra.Data.Dapper.csproj", "{13EB56AB-F87B-4B3D-AED8-EB61D4B4E82F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Marco.AspNetCore.ApiConfiguration", "Marco.AspNetCore.ApiConfiguration\Marco.AspNetCore.ApiConfiguration.csproj", "{BB2B609A-3DF1-4540-A6FE-D6E866AA9B07}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,10 +33,6 @@ Global
 		{13EB56AB-F87B-4B3D-AED8-EB61D4B4E82F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{13EB56AB-F87B-4B3D-AED8-EB61D4B4E82F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{13EB56AB-F87B-4B3D-AED8-EB61D4B4E82F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BB2B609A-3DF1-4540-A6FE-D6E866AA9B07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BB2B609A-3DF1-4540-A6FE-D6E866AA9B07}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BB2B609A-3DF1-4540-A6FE-D6E866AA9B07}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BB2B609A-3DF1-4540-A6FE-D6E866AA9B07}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
