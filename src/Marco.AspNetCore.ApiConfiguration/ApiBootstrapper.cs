@@ -102,6 +102,7 @@ namespace Marco.AspNetCore.ApiConfiguration
                             options.SwaggerDoc(description.GroupName, CreateSwaggerInfoForApiVersion(description));
 
                         options.DescribeAllEnumsAsStrings();
+                        options.SchemaFilter<SwaggerExcludeFilter>();
                         options.OperationFilter<SwaggerDefaultValues>();
                         options.IncludeXmlComments(XmlCommentsFilePath);
                     });
