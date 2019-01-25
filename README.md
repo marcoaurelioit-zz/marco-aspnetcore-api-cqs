@@ -1,2 +1,2 @@
 # marco-aspnetcore-api-cqs
-WebApi aspnet core using CQS (Command Query Separation)
+WebApi AspNet Core using CQS (Command Query Separation)
