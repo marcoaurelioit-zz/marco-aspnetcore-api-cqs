@@ -14,7 +14,7 @@ namespace Marco.AspNetCore.ApiConfiguration
 {
     public abstract class ApiBootStrapper
     {
-        public IConfiguration Configuration { get; }       
+        public IConfiguration Configuration { get; }
         private string XmlCommentsFilePath
         {
             get
@@ -23,16 +23,16 @@ namespace Marco.AspNetCore.ApiConfiguration
                 var fileName = PlatformServices.Default.Application.ApplicationName + ".xml";
                 return Path.Combine(basePath, fileName);
             }
-        }     
+        }
 
         protected ApiBootStrapper(IConfiguration configuration) =>
-             Configuration = configuration;     
+             Configuration = configuration;
 
         public void ConfigureServices(IServiceCollection services)
-        {            
+        {
             services.AddHttpContextAccessor();
             services.AddAutoMapper();
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);            
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddMarcoLogging(Configuration);
             AddSwagger(services);
             AddCustomApiServices(services);
@@ -47,6 +47,8 @@ namespace Marco.AspNetCore.ApiConfiguration
             app.UseSwaggerUI(
                 options =>
                 {
+                    options.DefaultModelsExpandDepth(-1);
+
                     foreach (var description in apiVersionDescriptionProvider.ApiVersionDescriptions)
                         options.SwaggerEndpoint($"/swagger/{description.GroupName}/swagger.json", description.GroupName.ToUpperInvariant());
                 });
@@ -130,8 +132,8 @@ namespace Marco.AspNetCore.ApiConfiguration
                 info.Description += "<br><br><span style=\"color: #ff0000;font-weight: bold;\">This version is already deprecated.</span>";
 
             return info;
-        }  
-        
+        }
+
         private Info CreateInfoForApiVersion(ApiVersionDescription description)
         {
             var info = new Info()

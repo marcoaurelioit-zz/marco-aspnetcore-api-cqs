@@ -24,7 +24,7 @@ namespace Marco.AspNetCore.Cqs.WebApi.Controllers.v1
         
         [HttpGet("{cpf}")]
         [ProducesResponseType(typeof(PessoaFisicaGetResult),200)]
-        [ProducesResponseType(typeof(CoreException<CoreExceptionItem>), 400)]
+        [ProducesResponseType(typeof(CoreException), 400)]
         [ProducesResponseType(typeof(InternalServerError), 500)]
         public async Task<IActionResult> GetByCpfAsync([FromRoute]string cpf)
         {
