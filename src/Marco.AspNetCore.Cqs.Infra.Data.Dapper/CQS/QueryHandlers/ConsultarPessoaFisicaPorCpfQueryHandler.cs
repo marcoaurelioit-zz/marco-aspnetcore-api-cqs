@@ -1,6 +1,5 @@
 ﻿using arco.AspNetCore.Cqs.Infra.Data.Dapper.CQS.Queries;
 using Marco.AspNetCore.Cqs.Domain.Models;
-using Marco.AspNetCore.Cqs.Infra.Data.Dapper.Context;
 using Marco.Caching;
 using MediatR;
 using System;
@@ -21,7 +20,9 @@ namespace Marco.AspNetCore.Cqs.Infra.Data.Dapper.CQS.QueryHandlers
         }
 
         public async Task<PessoaFisica> Handle(ConsultarPessoaFisicaPorCpfQuery query, CancellationToken cancellationToken)
-        {
+        { 
+            // Apenas realizar a consulta em uma fonte de dados.
+
             if (query.Cpf is null || string.IsNullOrWhiteSpace(query.Cpf?.Numero))
                 return null;
 

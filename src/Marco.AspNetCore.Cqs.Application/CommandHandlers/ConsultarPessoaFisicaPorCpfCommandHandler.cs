@@ -19,6 +19,8 @@ namespace Marco.AspNetCore.Cqs.Application.CommandHandlers
 
         public async Task<PessoaFisica> Handle(ConsultarPessoaFisicaPorCpfCommand request, CancellationToken cancellationToken)
         {
+            // Regras de negócio e demais orquestrações para obter o resultado da consulta.
+
             return await _mediator.Send(new ConsultarPessoaFisicaPorCpfQuery(request.Cpf.Numero), cancellationToken);
         }
     }

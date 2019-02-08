@@ -1,4 +1,5 @@
-﻿using AutoMapper;
+﻿using arco.AspNetCore.Cqs.Infra.Data.Dapper.CQS.Queries;
+using AutoMapper;
 using Marco.AspNetCore.Cqs.Application.Commands;
 using Marco.AspNetCore.Cqs.Domain.Models;
 using Marco.AspNetCore.Cqs.WebApi.Models.v1;
@@ -23,11 +24,16 @@ namespace Marco.AspNetCore.Cqs.WebApi.Controllers.v1
         public PessoasFisicasController(IMediator mediator)=> 
             this.mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
         
-        [HttpGet("{cpf}")]
+        /// <summary>
+        /// Exemplo utilizando o command
+        /// </summary>
+        /// <param name="cpf"></param>
+        /// <returns></returns>
+        [HttpGet("ConsultarViaCommand/{cpf}")]
         [ProducesResponseType(typeof(PessoaFisicaGetResult), (int)HttpStatusCode.OK)]
         [ProducesResponseType(typeof(CoreException), (int)HttpStatusCode.BadRequest)]
         [ProducesResponseType(typeof(InternalServerError), (int)HttpStatusCode.InternalServerError)]
-        public async Task<IActionResult> GetByCpfAsync([FromRoute]string cpf)
+        public async Task<IActionResult> GetByCpfCommandAsync([FromRoute]string cpf)
         {
             var command = new ConsultarPessoaFisicaPorCpfCommand(cpf);
 
@@ -37,6 +43,27 @@ namespace Marco.AspNetCore.Cqs.WebApi.Controllers.v1
                 return NotFound();
 
             return Ok(Mapper.Map<PessoaFisica,PessoaFisicaGetResult>(pessoaFisica));
+        }
+
+        /// <summary>
+        /// Exemplo utilizando o query
+        /// </summary>
+        /// <param name="cpf"></param>
+        /// <returns></returns>
+        [HttpGet("ConsultarViaQuery{cpf}")]
+        [ProducesResponseType(typeof(PessoaFisicaGetResult), (int)HttpStatusCode.OK)]
+        [ProducesResponseType(typeof(CoreException), (int)HttpStatusCode.BadRequest)]
+        [ProducesResponseType(typeof(InternalServerError), (int)HttpStatusCode.InternalServerError)]
+        public async Task<IActionResult> GetByCpfQueryAsync([FromRoute]string cpf)
+        {
+            var query = new ConsultarPessoaFisicaPorCpfQuery(cpf);
+
+            var pessoaFisica = await mediator.Send(query);
+
+            if (pessoaFisica is null)
+                return NotFound();
+
+            return Ok(Mapper.Map<PessoaFisica, PessoaFisicaGetResult>(pessoaFisica));
         }
     }
 }
