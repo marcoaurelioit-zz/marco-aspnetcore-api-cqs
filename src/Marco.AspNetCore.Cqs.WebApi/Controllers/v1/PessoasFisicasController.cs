@@ -50,7 +50,7 @@ namespace Marco.AspNetCore.Cqs.WebApi.Controllers.v1
         /// </summary>
         /// <param name="cpf"></param>
         /// <returns></returns>
-        [HttpGet("ConsultarViaQuery{cpf}")]
+        [HttpGet("ConsultarViaQuery/{cpf}")]
         [ProducesResponseType(typeof(PessoaFisicaGetResult), (int)HttpStatusCode.OK)]
         [ProducesResponseType(typeof(CoreException), (int)HttpStatusCode.BadRequest)]
         [ProducesResponseType(typeof(InternalServerError), (int)HttpStatusCode.InternalServerError)]
