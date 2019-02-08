@@ -19,10 +19,10 @@ namespace Marco.AspNetCore.Cqs.WebApi.Controllers.v1
     [ApiVersion("1.0")]
     public class PessoasFisicasController : ApiBaseController
     {
-        private readonly IMediator mediator;
+        private readonly IMediator _mediator;
 
-        public PessoasFisicasController(IMediator mediator)=> 
-            this.mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
+        public PessoasFisicasController(IMediator mediator)=>
+            _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
         
         /// <summary>
         /// Exemplo utilizando o command
@@ -37,7 +37,7 @@ namespace Marco.AspNetCore.Cqs.WebApi.Controllers.v1
         {
             var command = new ConsultarPessoaFisicaPorCpfCommand(cpf);
 
-            var pessoaFisica = await mediator.Send(command);
+            var pessoaFisica = await _mediator.Send(command);
 
             if (pessoaFisica is null)
                 return NotFound();
@@ -58,7 +58,7 @@ namespace Marco.AspNetCore.Cqs.WebApi.Controllers.v1
         {
             var query = new ConsultarPessoaFisicaPorCpfQuery(cpf);
 
-            var pessoaFisica = await mediator.Send(query);
+            var pessoaFisica = await _mediator.Send(query);
 
             if (pessoaFisica is null)
                 return NotFound();
