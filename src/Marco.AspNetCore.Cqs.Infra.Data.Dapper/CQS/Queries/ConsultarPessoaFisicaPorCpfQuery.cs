@@ -1,9 +1,10 @@
-﻿using Marco.AspNetCore.Cqs.Domain.Interfaces.CQS.Queries;
+﻿using Marco.AspNetCore.Cqs.Domain.Models;
 using Marco.Domain.Core.ValueObjects.Documentos;
+using MediatR;
 
-namespace Marco.AspNetCore.Cqs.Application.Queries
+namespace arco.AspNetCore.Cqs.Infra.Data.Dapper.CQS.Queries
 {
-    public class ConsultarPessoaFisicaPorCpfQuery : IConsultarPessoaFisicaPorCpfQuery
+    public class ConsultarPessoaFisicaPorCpfQuery : IRequest<PessoaFisica>
     {
         public Cpf Cpf { get; private set; }
 

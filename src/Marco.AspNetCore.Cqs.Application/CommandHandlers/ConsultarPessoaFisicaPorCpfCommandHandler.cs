@@ -1,8 +1,5 @@
-﻿using Marco.AspNetCore.Cqs.Application.Commands;
-using Marco.AspNetCore.Cqs.Application.Queries;
-using Marco.AspNetCore.Cqs.Domain.Interfaces.CQS;
-using Marco.AspNetCore.Cqs.Domain.Interfaces.CQS.Commands;
-using Marco.AspNetCore.Cqs.Domain.Interfaces.CQS.Queries;
+﻿using arco.AspNetCore.Cqs.Infra.Data.Dapper.CQS.Queries;
+using Marco.AspNetCore.Cqs.Application.Commands;
 using Marco.AspNetCore.Cqs.Domain.Models;
 using MediatR;
 using System;
@@ -11,23 +8,18 @@ using System.Threading.Tasks;
 
 namespace Marco.AspNetCore.Cqs.Application.CommandHandlers
 {
-    public class ConsultarPessoaFisicaPorCpfCommandHandler :
-        ICommandHandler<IConsultarPessoaFisicaPorCpfCommand, PessoaFisica>,
-        IRequestHandler<ConsultarPessoaFisicaPorCpfCommand, PessoaFisica>
+    public class ConsultarPessoaFisicaPorCpfCommandHandler : IRequestHandler<ConsultarPessoaFisicaPorCpfCommand, PessoaFisica>
     {
-        private readonly IQueryHandler<IConsultarPessoaFisicaPorCpfQuery, PessoaFisica> consultarPessoaFisicaPorCpfQueryHandler;
+        private readonly IMediator _mediator;
 
-        public ConsultarPessoaFisicaPorCpfCommandHandler(IQueryHandler<IConsultarPessoaFisicaPorCpfQuery, PessoaFisica> consultarPessoaFisicaPorCpfQueryHandler)
+        public ConsultarPessoaFisicaPorCpfCommandHandler(IMediator mediator)
         {
-            this.consultarPessoaFisicaPorCpfQueryHandler = consultarPessoaFisicaPorCpfQueryHandler ?? throw new ArgumentNullException(nameof(consultarPessoaFisicaPorCpfQueryHandler));
+            _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
         }
 
-        public async Task<PessoaFisica> Execute(IConsultarPessoaFisicaPorCpfCommand command, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<PessoaFisica> Handle(ConsultarPessoaFisicaPorCpfCommand request, CancellationToken cancellationToken)
         {
-            return await consultarPessoaFisicaPorCpfQueryHandler.Execute(new ConsultarPessoaFisicaPorCpfQuery(command.Cpf.Numero), cancellationToken);
+            return await _mediator.Send(new ConsultarPessoaFisicaPorCpfQuery(request.Cpf.Numero), cancellationToken);
         }
-
-        public async Task<PessoaFisica> Handle(ConsultarPessoaFisicaPorCpfCommand request, CancellationToken cancellationToken) =>
-            await Execute(request, cancellationToken);
     }
 }

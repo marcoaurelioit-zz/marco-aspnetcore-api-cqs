@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Marco.AspNetCore.Cqs.Domain\Marco.AspNetCore.Cqs.Domain.csproj" />
+    <ProjectReference Include="..\Marco.AspNetCore.Cqs.Infra.Data.Dapper\Marco.AspNetCore.Cqs.Infra.Data.Dapper.csproj" />
   </ItemGroup>
 
 </Project>

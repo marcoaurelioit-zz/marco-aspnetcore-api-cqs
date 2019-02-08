@@ -1,10 +1,9 @@
-﻿using Marco.AspNetCore.Cqs.Domain.Interfaces.CQS;
-using Marco.AspNetCore.Cqs.Domain.Interfaces.CQS.Queries;
-using Marco.AspNetCore.Cqs.Domain.Models;
-using Marco.AspNetCore.Cqs.Infra.Data.Dapper;
+﻿using Marco.AspNetCore.Cqs.Infra.Data.Dapper;
 using Marco.AspNetCore.Cqs.Infra.Data.Dapper.Context;
 using Marco.AspNetCore.Cqs.Infra.Data.Dapper.CQS.QueryHandlers;
+using MediatR;
 using System;
+using System.Reflection;
 
 namespace Microsoft.Extensions.DependencyInjection
 {
@@ -21,8 +20,7 @@ namespace Microsoft.Extensions.DependencyInjection
             services.AddSingleton(sqlServerReadOnlySettings);
             services.AddScoped<ContextReadOnly>();
 
-            // Register query handlers
-            services.AddScoped<IQueryHandler<IConsultarPessoaFisicaPorCpfQuery, PessoaFisica>, ConsultarPessoaFisicaPorCpfQueryHandler>();
+            services.AddMediatR(typeof(ConsultarPessoaFisicaPorCpfQueryHandler).GetTypeInfo().Assembly);
 
             return services;
         }

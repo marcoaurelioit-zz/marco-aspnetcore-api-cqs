@@ -1,32 +1,33 @@
-﻿using Marco.AspNetCore.Cqs.Domain.Interfaces.CQS;
-using Marco.AspNetCore.Cqs.Domain.Interfaces.CQS.Queries;
+﻿using arco.AspNetCore.Cqs.Infra.Data.Dapper.CQS.Queries;
 using Marco.AspNetCore.Cqs.Domain.Models;
 using Marco.AspNetCore.Cqs.Infra.Data.Dapper.Context;
 using Marco.Caching;
+using MediatR;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace Marco.AspNetCore.Cqs.Infra.Data.Dapper.CQS.QueryHandlers
 {
-    public class ConsultarPessoaFisicaPorCpfQueryHandler : QueryHandler<ContextReadOnly>, IQueryHandler<IConsultarPessoaFisicaPorCpfQuery, PessoaFisica>
+    public class ConsultarPessoaFisicaPorCpfQueryHandler : IRequestHandler<ConsultarPessoaFisicaPorCpfQuery, PessoaFisica>
     {
-        private readonly ICache cache;
+        private readonly ICache _cache;
+        private readonly ContextReadOnly _contextReadOnly;
 
         public ConsultarPessoaFisicaPorCpfQueryHandler(ContextReadOnly contextReadOnly, ICache cache)
-            : base(contextReadOnly)
         {
-            this.cache = cache ?? throw new ArgumentNullException(nameof(cache));
+            _contextReadOnly = contextReadOnly ?? throw new ArgumentNullException(nameof(contextReadOnly));
+            _cache = cache ?? throw new ArgumentNullException(nameof(cache));           
         }
 
-        public async Task<PessoaFisica> Execute(IConsultarPessoaFisicaPorCpfQuery query, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<PessoaFisica> Handle(ConsultarPessoaFisicaPorCpfQuery query, CancellationToken cancellationToken)
         {
             if (query.Cpf is null || string.IsNullOrWhiteSpace(query.Cpf?.Numero))
                 return null;
 
             var cacheKey = $"{nameof(PessoaFisica)}_Cpf:{query.Cpf.Numero}";
 
-            if (!cache.TryGetValue<PessoaFisica>(cacheKey, out var pessoaFisica))
+            if (!_cache.TryGetValue<PessoaFisica>(cacheKey, out var pessoaFisica))
             {
                 // to use database
 
@@ -45,7 +46,7 @@ namespace Marco.AspNetCore.Cqs.Infra.Data.Dapper.CQS.QueryHandlers
                 };
 
                 if (pessoaFisica != null)
-                    await cache.SetAsync(cacheKey, pessoaFisica);
+                    await _cache.SetAsync(cacheKey, pessoaFisica);
             }
 
             return pessoaFisica;
