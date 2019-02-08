@@ -1,5 +1,4 @@
 ﻿using Marco.AspNetCore.Cqs.Infra.Data.Dapper;
-using Marco.AspNetCore.Cqs.Infra.Data.Dapper.Context;
 using Marco.AspNetCore.Cqs.Infra.Data.Dapper.CQS.QueryHandlers;
 using MediatR;
 using System;
