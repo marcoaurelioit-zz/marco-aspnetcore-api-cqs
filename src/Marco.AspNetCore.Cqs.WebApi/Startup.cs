@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using Marco.AspNetCore.Cqs.Infra.Data.Dapper;
 using Marco.AspNetCore.WebApi.BootStrapper;
-using Marco.Caching;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -36,7 +35,6 @@ namespace Marco.AspNetCore.Cqs.WebApi
         {
             services.AddCustomApplicationServices();        
             services.AddDapper(Configuration.GetSection(nameof(SqlServerReadOnlySettings)).TryGet<SqlServerReadOnlySettings>());
-            services.AddMarcoCaching(Configuration.GetSection(nameof(CacheConfiguration)).TryGet<CacheConfiguration>());
         }
 
         [ExcludeFromCodeCoverage]
