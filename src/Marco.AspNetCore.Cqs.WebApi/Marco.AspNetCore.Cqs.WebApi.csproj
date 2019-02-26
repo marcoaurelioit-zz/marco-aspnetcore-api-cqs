@@ -21,10 +21,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Marco.AspNetCore.WebApi.BootStrapper" Version="1.0.0" />
   </ItemGroup>
  
